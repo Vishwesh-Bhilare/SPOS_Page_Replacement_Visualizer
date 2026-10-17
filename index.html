@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Page Replacement Analyzer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hero">
+  <p class="eyebrow">Virtual Memory</p>
+  <h1>Page Replacement Analyzer</h1>
+  <p class="lede">FIFO, LRU and Optimal, compared one reference at a time.</p>
+</header>
+
+<main>
+  <section class="block">
+    <div class="examples" id="examples"></div>
+    <div class="controls">
+      <div class="field grow">
+        <label for="refs">Reference string</label>
+        <input id="refs" type="text" spellcheck="false">
+      </div>
+      <div class="field">
+        <label for="frames">Frames</label>
+        <input id="frames" type="number" min="1" max="10" value="3">
+      </div>
+      <button id="run" class="solid">Analyze</button>
+    </div>
+    <div id="err" class="err"></div>
+    <div id="check" class="check"></div>
+  </section>
+
+  <section id="summary" class="cols3 block"></section>
+
+  <section class="block">
+    <h2>Fault rate</h2>
+    <div id="bars"></div>
+  </section>
+
+  <section class="block">
+    <div class="row-between">
+      <h2>Step by step</h2>
+      <div class="tabs" id="tabs"></div>
+    </div>
+    <div id="chips" class="chips"></div>
+    <div id="stage" class="stage"></div>
+    <div class="player">
+      <button id="bReset">Reset</button>
+      <button id="bPrev">Prev</button>
+      <button id="bPlay" class="solid">Play</button>
+      <button id="bNext">Next</button>
+      <input id="slider" type="range" min="0" max="0" value="0">
+      <span id="stepLbl" class="mono muted"></span>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Trace</h2>
+    <p class="muted small">Columns are time steps. Select a column to jump to it.</p>
+    <div id="traces"></div>
+  </section>
+
+  <section class="block">
+    <h2>Frames and faults</h2>
+    <p class="muted small">The same string, with the frame count varied.</p>
+    <div id="sweep"></div>
+    <div id="belady"></div>
+  </section>
+
+  <section class="block">
+    <h2>Calculations</h2>
+    <div id="math" class="cols3"></div>
+  </section>
+</main>
+
+<footer>Page Replacement Analyzer</footer>
+<script src="app.js"></script>
+</body>
+</html>
